@@ -8,8 +8,14 @@
     border 0
     padding 8px 16px
     background-color #1777f2 // Extracted from Facebook's F5 design
-    outline none
     border-radius 4px
+    cursor pointer
+    outline none
+    transition opacity var(--transition-medium)
+
+    &:hover,
+    &:focus
+        opacity .9
 
     & > .icon
         width 28px

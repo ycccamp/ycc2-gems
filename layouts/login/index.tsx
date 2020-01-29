@@ -1,11 +1,13 @@
 import FacebookButton from "components/core/facebookButton"
 
-import "./loginLayout.styl"
+import "./login-layout.styl"
 
 const LoginLayout = () => (
 	<main id="login-layout">
 		<img id="ycc-icon" src="/images/ycc-icon.png" alt="YCC's icon" />
-		<FacebookButton />
+		<section className="display">
+			<FacebookButton />
+		</section>
 	</main>
 )
 

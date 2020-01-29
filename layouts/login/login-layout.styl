@@ -1,0 +1,35 @@
+#login-layout
+    display flex
+    flex-direction column
+    justify-content center
+    align-items center
+    width 100%
+    height 100vh
+
+    & > .display
+        animation display-from-splash .75s ease-out 0s 1
+
+#ycc-icon
+    position absolute
+    top calc(5vh + 50px)
+    width 36px
+    height 36px
+    object-fit contain
+    object-position center
+    animation move-icon-from-splash .65s cubic-bezier(.9, .25, .3, 1) 0s 1
+
+@keyframes move-icon-from-splash
+    from
+        width 48px
+        height 48px
+        top calc(50vh - 24px)
+
+@keyframes display-from-splash
+    0%
+        opacity 0
+
+    70%
+        opacity 0
+
+    100%
+        opacity 1
