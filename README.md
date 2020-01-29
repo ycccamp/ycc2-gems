@@ -1,101 +1,173 @@
-# Nextjs with Preact X!
-A starter template for using Next.js with Preact X!
+# YCC Gemstone 2
+This repository is meant for developing YCC Gemstone #2 for multiple developers across many workspace.
 
-## This starter is ready to be here:
-```bash
-git clone https://github.com/aomkirby123/nextjs-preactX
-```
+## Guideline
+### Stack
+This project is based on the following stack:
+- View
+	- Preact/React
+	- Next.js
 
-## To migrate from existed project
-We need to add next.js and preact
+- Database
+	- Firebase
+		- Firestore
+		- Authentication
 
-```bash
-yarn add next preact@10 preact-render-to-string@next preact-ssr-prepass module-alias
-yarn add react react-dom --dev
+- Utilities
+	- TypeScript
+	- Redux
+	- Stylus (CSS Pre-processer)
 
-// or using npm
-npm install next preact@10 preact-render-to-string@next preact-ssr-prepass module-alias
-npm-install react react-dom --save-dev
-```
-###### Note: The lastest preact-render-to-string is version 4 which doesn't support Preact X while preact-render-to-string version 5 supports Preact X but is on the tags of 'next', so we specifiy the version here.
-###### Otherwise, SSR result will be `undefined`.
+Any other sub-stack is appreciately acceptable.
 
-### Wait, why do we add React here?
-Next.js require `React` and `React DOM` to run, so we'll use a little trick.
-
-Now create next.config.js as same level as package.json and add:
-```javascript
-// next.config.js
-const withPreact = (nextConfig = {}) => {
-	return Object.assign({}, nextConfig, {
-		webpack(config, options) {
-			if (!options.defaultLoaders) {
-				throw new Error(
-				"This plugin is not compatible with Next.js versions below 5.0.0 https://err.sh/next-plugins/upgrade"
-				)
-			}
-
-			if (options.isServer) {
-				config.externals = ["react", "react-dom", ...config.externals]
-			}
-
-			config.resolve.alias = Object.assign({}, config.resolve.alias, {
-				react: "preact/compat",
-				react$: "preact/compat",
-				"react-dom": "preact/compat",
-				"react-dom$": "preact/compat"
-			})
-
-			if (typeof nextConfig.webpack === "function") {
-				return nextConfig.webpack(config, options)
-			}
-
-			return config
+### Structure Guideline
+Based on Next.js recommended structure combined with Atomic design and component-based.
+While developing for YCC Gems please refer to these rules and follow the following structure.
+- Always seperate TypeScript's logic as an external file except implementing existing logic to variable.
+	eg. `interface` `type`
+	```typescript
+		// Should be seperate
+		interface Pizza {
+			size: "small" | "medium" | "large"
+			price: number
 		}
+
+		// Shouldn't be seperate
+		const DisplayPizza: Pizza = new Pizza()
+	```	
+
+- Next.js
+	- pages
+		- Responsible for storing pages model
+	- pageTypes
+		- Storing any TypeScript's logic for `pages`
+		- Should be name as same `pages` file which is using.
+	- public
+		- fonts - Storing fonts
+		- images - Storing Images
+		- stylus - Storing `.styl` file
+	- layouts - Storing layouts file
+		- [layoutName]
+			- index.tsx - Main export
+			- types.ts - Implement TypeScript logic
+			- [layoutName].styl - Layout's style.
+
+- components - Refer to an atomic design guideline
+	- atoms
+	- molecules
+	- organisms
+
+	- core (Only for component which is only use in layouts and isn't meant to be reusable)
+
+	Each folder should be implement like layouts.
+
+- stores - Redux store
+	- index.tsx - main export, export main store here.
+	- initState.ts - Defined initial state (for testing).
+	- reducers.ts - Defined reducers which is combined.
+	
+	- reducers - Seperated reducer
+		- [reducerName]
+			- index.ts - Main export
+			- types.ts - Reducer's type
+
+	- selectors - Please refer to [Redux's selector guideline.](https://redux.js.org/recipes/computing-derived-data/) and [Reselect Guideline](https://github.com/reduxjs/reselect)
+		- [reducerName]
+			- index.ts - Main export
+			- types.ts - Selector's type
+
+- libs - Define any helpers' function here.
+	- [Helpers name]
+
+- __test__ - For testing
+	- [testName].test.ts
+
+### TypeScript strategy
+To maintain readability code's style across many collaborator, please consider the following rule:
+- Always put import on the top level of the file and order imports by the following order:
+	- View library (React/Preact)
+	- Store library (Redux)
+	- Firebase
+	- layouts
+	- components
+	- libs
+	- Utility
+	- Stylesheet
+	- Type file
+
+- Prevent usage of nested `if`, `bracket`, `semi-colon` and `return` where possible
+	Instead of
+	```typescript
+	if(isLogin){
+		showProfilePage();
+	} else {
+		showLoginPage();
+	}
+	```
+
+	Do this instead
+	```typescript
+	if(isLogin)
+		return showProfilePage() // Return won't read the code underneath
+
+	showLoginPage()
+	```
+
+	Prevent `return` on `map`, `forEach` and any other chain.
+	```typescript
+	// Instead of
+	fruits.map(fruit => {
+		return fruit
 	})
-}
 
-module.exports = withPreact()
-```
-    
-## That's it, You're done!
+	// Using benefit of arrow function
+	fruits.map(fruit => fruit)
+	```
 
-### Wait, what is happening here?
-  
-#### Aliasing React to Preact
-Next.js require `React` and `React DOM` to be installed to run `Next` but since we want to use Preact instead, we add `Preact` then we add `React` and `React DOM` as `dev dependencies`.
-This make sure that the build process will NOT bundle React and React DOM.
-  
-Now we need to alias `React` and `React DOM` to `Preact` instead.
-  
-#### next.config.js
-Nextjs provided `next.config.js` to customize the environment and loader which we can alias React and React DOM to Preact here.
-  
-The previous code will alias `React` and `React DOM` to `Preact` and since Preact X, `preact-compat` is now moved to core as `preact/compat`.
-  
-### Custom server with Preact
-##### Note: This is require if you want to use a custom server with Next.js. With default with next.js next.config.js is enough.
-We need `module-alias` to 'alias' `React` and `React DOM` to `Preact`, this will trick Next.js to import Preact instead of React on server since Next.js required React (but we don't actually use them).
-Now, to alias we need to add this to package.json:
-```bash
-"_moduleAliases": {
-    "react": "node_modules/preact/compat",
-    "react-dom": "node_modules/preact/compat",
-    "react-ssr-prepass": "node_modules/preact-ssr-prepass"
-  }
-```
-and we also need to alias a custom server. Add this to top of server.js:
-```javascript
-require('module-alias/register')
-```
+- Use `async/await` where possible:
+	Don't do this
+	```typescript
+	const firestore = firebase.firestore()
 
-### Wait, what is the meaning of this?
-On `Preact X`, `preact-compat` come with `Preact` in `preact/compat` directory, so we defined `preact-compat` to `preact/compat`.
-You might notice that we also alias `react-ssr-prepass` to `preact-ssr-prepass`.
+	firestore
+		.collection("Vocaloid")
+		.document("Hatsune Miku")
+		.get()
+		.then(miku => save(miku.data()))
+	```
 
-The `_moduleAliases` trick an import from react to preact.
+	Do this
+	```typescript
+	const firestore = firebase.firestore()
 
-Although, this is enough for running a `dev server` and `production server`, but it couldn't be built since Next.js does require React.
-Now we add React and React DOM to `dev-dependencies`, this will trick Next.js that we use React (but we actually doesn't use it), since Next.js required React and React DOM, but can only be alias on a custom server.
+	const miku = await firestore
+		.collection("Vocaloid")
+		.document("Hatsune Miku")
+		.get()
 
-The reason we need to use custom server is: to ensure that module does alias to Preact correctly otherwise, we are just using React.
+	save(miku.data())
+	```
+
+- ALWAYS use `const` on top level otherwise use `let`.
+- Group same type of variable as on the same variable declaration.
+	Don't do this:
+	```typescript
+	let [menu, updateMenu] = useState(latestMenu)
+	let [price, updatePrice] = useState(0)
+	```
+
+	Do this:
+	```typescript
+	let [menu, updateMenu] = useState(latestMenu),
+		[price, updatePrice] = useState(0)
+	```
+
+- Each Component should only contains itself.
+- Each Component should be using `export default`.
+
+### Stylesheet Guideline
+Using [Stylus](http://stylus-lang.com/), almost anything that `sass`, `scss`, `less` can do, should be implementable with stylus. If you're not familiar with `Stylus` you can install any CSS pro-processor you like.
+
+- Refer to the [RSCSS Strategy](https://rscss.io) as coding style.
+- Prevent usage of `semi-colon`, `comma` and `bracket`.
+- Use CSS variable instead of pre-processor's variable system.
