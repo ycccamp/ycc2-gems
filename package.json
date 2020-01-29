@@ -1,11 +1,12 @@
 {
-	"name": "next-preact",
-	"version": "0.0.3",
+	"name": "ycc2-gemstone",
+	"version": "0.1.0",
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
 		"dev": "next",
 		"build": "next build",
+		"export": "next export",
 		"start": "next start"
 	},
 	"dependencies": {

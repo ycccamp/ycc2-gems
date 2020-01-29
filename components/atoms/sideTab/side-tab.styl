@@ -1,0 +1,25 @@
+.side-tab
+    appearance none
+    width 100%
+    display flex
+    flex-direction row
+    justify-content flex-start
+    border 0
+    transition var(--transition-fast)
+    outline none
+    cursor pointer
+
+    &.mdc-button::before, &.mdc-button::after
+        transition var(--transition-fast)
+        background rgba(0,0,0,.65)
+
+    &.mdc-button
+        justify-content flex-start
+        height unset
+        padding 12px 24px
+        border-radius 0
+
+    & > .mdc-button__label
+        font-size 18px
+        color var(--text)
+        margin 0

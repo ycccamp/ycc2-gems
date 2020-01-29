@@ -2,13 +2,16 @@ import App from "next/app"
 
 import LoginLayout from "layouts/login"
 import LoadingLayout from "layouts/loading"
+import DashboardLayout from "layouts/dashboard"
 
 import { auth } from "libs/firebase"
 import { isServer, isEmpty } from "libs/helpers"
 
 import "stylus/init.styl"
 
-class YCCGemstone extends App<{}, {}, { user: Object }> {
+import YCCGemstoneState from "pageTypes/_app"
+
+class YCCGemstone extends App<{}, {}, YCCGemstoneState> {
 	constructor(props) {
 		super(props)
 
@@ -33,7 +36,9 @@ class YCCGemstone extends App<{}, {}, { user: Object }> {
 		) : isEmpty(this.state.user) ? (
 			<LoginLayout />
 		) : (
-			<Component {...pageProps} />
+			<DashboardLayout>
+				<Component {...pageProps} />
+			</DashboardLayout>
 		)
 	}
 }

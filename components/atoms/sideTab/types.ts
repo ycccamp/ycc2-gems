@@ -1,18 +1,18 @@
-import { FC, ReactChild } from "react"
+import { ReactChild } from "react"
 
 interface SideTabAsLink {
     href: string
-    asButton: false
-    onClick(): null
+    asButton?: false
+    onClick?: () => null
     children: ReactChild
 }
 
 interface SideTabAsButton {
-    href: undefined
+    href?: undefined
     asButton: true
-    onClick?: (event: Event) => Function
+    onClick(event: Event): Function
     children: ReactChild
 }
 
-type SideTab = SideTabAsLink | SideTabAsButton
-export default SideTab
+type TSideTab = SideTabAsLink | SideTabAsButton
+export default TSideTab
