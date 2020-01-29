@@ -26,14 +26,14 @@ While developing for YCC Gems please refer to these rules and follow the followi
 - Always seperate TypeScript's logic as an external file except implementing existing logic to variable.
 	eg. `interface` `type`
 	```typescript
-		// Should be seperate
-		interface Pizza {
-			size: "small" | "medium" | "large"
-			price: number
-		}
+	// Should be seperate
+    interface Pizza {
+        size: "small" | "medium" | "large";
+        price: number;
+    }
 
-		// Shouldn't be seperate
-		const DisplayPizza: Pizza = new Pizza()
+    // Shouldn't be seperate
+    const DisplayPizza: Pizza = new Pizza();
 	```	
 
 - Next.js
@@ -99,16 +99,16 @@ To maintain readability code's style across many collaborator, please consider t
 	Instead of
 	```typescript
 	if(isLogin){
-		showProfilePage();
+	    showProfilePage();
 	} else {
-		showLoginPage();
+	    showLoginPage();
 	}
 	```
 
 	Do this instead
 	```typescript
 	if(isLogin)
-		return showProfilePage() // Return won't read the code underneath
+	    return showProfilePage() // Return won't read the code underneath
 
 	showLoginPage()
 	```
@@ -117,7 +117,7 @@ To maintain readability code's style across many collaborator, please consider t
 	```typescript
 	// Instead of
 	fruits.map(fruit => {
-		return fruit
+	    return fruit
 	})
 
 	// Using benefit of arrow function
@@ -130,10 +130,10 @@ To maintain readability code's style across many collaborator, please consider t
 	const firestore = firebase.firestore()
 
 	firestore
-		.collection("Vocaloid")
-		.document("Hatsune Miku")
-		.get()
-		.then(miku => save(miku.data()))
+	    .collection("Vocaloid")
+	    .document("Hatsune Miku")
+	    .get()
+	    .then(miku => save(miku.data()))
 	```
 
 	Do this
@@ -141,9 +141,9 @@ To maintain readability code's style across many collaborator, please consider t
 	const firestore = firebase.firestore()
 
 	const miku = await firestore
-		.collection("Vocaloid")
-		.document("Hatsune Miku")
-		.get()
+	    .collection("Vocaloid")
+	    .document("Hatsune Miku")
+	    .get()
 
 	save(miku.data())
 	```
@@ -159,7 +159,7 @@ To maintain readability code's style across many collaborator, please consider t
 	Do this:
 	```typescript
 	let [menu, updateMenu] = useState(latestMenu),
-		[price, updatePrice] = useState(0)
+	    [price, updatePrice] = useState(0)
 	```
 
 - Each Component should only contains itself.
