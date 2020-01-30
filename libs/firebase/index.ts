@@ -8,8 +8,8 @@ const firebaseConfig = {
 	projectId: "ycc2020",
 	storageBucket: "ycc2020.appspot.com",
 	messagingSenderId: "959291668430",
-	appId: "1:959291668430:web:213f0abec4a89e5f879d9f",
-	measurementId: "G-C5LLV6B34N"
+	appId: "1:959291668430:web:2652b50a796526c0879d9f",
+	measurementId: "G-RFPCP58W9D"
 }
 // Initialize Firebase
 if (!firebase.apps.length)
