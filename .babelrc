@@ -1,0 +1,28 @@
+{
+	"presets": ["next/babel"],
+	"plugins": [
+		[
+			"module-resolver",
+			{
+				"root": ["."],
+				"alias": {
+					"pages": "./pages",
+					"stylus": "./public/stylus",
+					"fonts": "./public/fonts",
+					"images": "./public/images",
+					"components": "./components",
+					"~": "./",
+					"libs": "./libs",
+					"pageTypes": "./pageTypes",
+					"stores": "./stores",
+					"layouts": "./layouts"
+				}
+			}
+		]
+	],
+	"env": {
+		"production": {
+			"presets": ["next/babel", "minify"]
+		}
+	}
+}

@@ -10,9 +10,7 @@ const FacebookLoginButton = () => {
 				? new authen.GoogleAuthProvider()
 				: new authen.FacebookAuthProvider()
 
-		auth.signInWithPopup(provider).catch(error => {
-			console.warn(error)
-		})
+		auth.signInWithPopup(provider).catch(error => console.warn(error))
 	}
 
 	return (
