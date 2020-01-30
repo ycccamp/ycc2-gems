@@ -1,4 +1,4 @@
-import { auth as authen } from "firebase"
+import { auth as authen } from "firebase/app"
 import { auth } from "libs/firebase"
 
 import "./facebookButton.styl"

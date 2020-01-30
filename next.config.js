@@ -2,52 +2,44 @@ const { join } = require("path")
 
 const withCSS = require("@zeit/next-css"),
 	withStylus = require("@zeit/next-stylus"),
-	withOffline = require("next-offline"),
-	nextImages = require("next-images"),
-	withMinify = require("next-babel-minify")(),
-	withAnalyze = require("@next/bundle-analyzer")({
-		enabled: process.env.ANALYZE === "true"
-	}),
+	// withOffline = require("next-offline"),
+	// nextImages = require("next-images"),
+	// withMinify = require("next-babel-minify")(),
+	// withAnalyze = require("@next/bundle-analyzer")({
+	// 	enabled: process.env.ANALYZE === "true"
+	// }),
 	withPlugins = require("next-compose-plugins")
 
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 module.exports = withPlugins(
 	[
-		[withAnalyze],
+		// [withAnalyze],
 		[withCSS],
-		[withStylus],
-		[withMinify],
-		[nextImages],
-		[
-			withOffline,
-			{
-				dontAutoRegisterSw: true,
-				workboxOpts: {
-					swDest: "static/service-worker.js",
-					runtimeCaching: [
-						{
-							urlPattern: /.js$|.ttf$|.otf$|.css$|.svg$|.jpg$|.png$/,
-							handler: "CacheFirst"
-						}
-					]
-				}
-			}
-		]
+		[withStylus]
+		// [withMinify],
+		// [nextImages],
+		// [
+		// 	withOffline,
+		// 	{
+		// 		dontAutoRegisterSw: true,
+		// 		workboxOpts: {
+		// 			swDest: "static/service-worker.js",
+		// 			runtimeCaching: [
+		// 				{
+		// 					urlPattern: /.js$|.ttf$|.otf$|.css$|.svg$|.jpg$|.png$/,
+		// 					handler: "CacheFirst"
+		// 				}
+		// 			]
+		// 		}
+		// 	}
+		// ]
 	],
 	{
 		target: "serverless",
-		exportPathMap: () => {
-			return {
-				"/": {
-					page: "/"
-				}
-			}
-		},
-		target: "serverless",
 		webpack(config, options) {
-			config.optimization.minimizer = []
-			config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}))
+			// config.optimization.minimizer = []
+			// config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}))
 
 			config.resolve.alias["react"] = "preact/compat"
 			config.resolve.alias["react-dom"] = "preact/compat"
