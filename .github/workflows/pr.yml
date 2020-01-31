@@ -29,9 +29,6 @@ jobs:
     - name: "Init: Install dependencies"
       run: |
         yarn install
-        # cd ./functions | Uncomment when Firebase functions were used.
-        # yarn install
-        cd ..
     - name: "Test: Run test suite"
       run: |
         yarn test
