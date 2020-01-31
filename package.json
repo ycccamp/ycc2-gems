@@ -10,7 +10,8 @@
 		"firebase": "firebase",
 		"test": "jest",
 		"start": "next start",
-		"test:types": "tsc"
+		"test:types": "tsc",
+		"test:lint": "tslint 'src/**/*.{ts,tsx}'"
 	},
 	"dependencies": {
 		"@material/react-button": "^0.15.0",
@@ -42,7 +43,13 @@
 		"react-dom": "^16.12.0",
 		"stylus-loader": "^3.0.2",
 		"terser-webpack-plugin": "^2.3.3",
-		"typescript": "^3.7.5"
+		"tslint": "^6.0.0",
+		"tslint-config-prettier": "^1.18.0",
+		"tslint-eslint-rules": "^5.4.0",
+		"tslint-plugin-prettier": "^2.1.0",
+		"tslint-react": "^4.2.0",
+		"typescript": "^3.7.5",
+		"typescript-tslint-plugin": "^0.5.5"
 	},
 	"resolutions": {
 		"lodash": "latest"
