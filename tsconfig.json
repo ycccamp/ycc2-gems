@@ -13,7 +13,7 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"types": ["reflect-metadata", "jest"],
+		"types": ["jest"],
 		"baseUrl": ".",
 		"paths": {
 			"pages": ["pages"],

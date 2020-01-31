@@ -9,8 +9,9 @@ import SidebarDivider from 'components/atoms/sidebarDivider'
 import SidebarContainer from 'components/atoms/sidebarContainer'
 
 describe('Sidebar', () => {
-    nextRouter.useRouter = jest.fn()
-    nextRouter.useRouter.mockImplementation(() => ({ pathname: '/' }))
+    let NextRouter:any = nextRouter
+    NextRouter.useRouter = jest.fn()
+    NextRouter.useRouter.mockImplementation(() => ({ pathname: '/settings' }))
 
     let MockSidebar = render(
         <SidebarContainer>

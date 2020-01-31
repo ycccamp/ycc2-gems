@@ -5,8 +5,9 @@ import { render } from 'enzyme'
 import SideTab from 'components/atoms/sideTab'
 
 describe('SideTab', () => {
-    nextRouter.useRouter = jest.fn()
-    nextRouter.useRouter.mockImplementation(() => ({ pathname: '/settings' }))
+    let NextRouter:any = nextRouter
+    NextRouter.useRouter = jest.fn()
+    NextRouter.useRouter.mockImplementation(() => ({ pathname: '/settings' }))
 
     let MockSideTab = render(
         <SideTab href="/settings" icon="settings">

@@ -11,7 +11,8 @@
 		"test": "jest",
 		"start": "next start",
 		"test:types": "tsc",
-		"test:lint": "tslint 'src/**/*.{ts,tsx}'"
+		"test:lint": "tslint 'src/**/*.{ts,tsx}'",
+		"test:all": "jest && tsc && tslint 'src/**/*.{ts,tsx}'"
 	},
 	"dependencies": {
 		"@material/react-button": "^0.15.0",
