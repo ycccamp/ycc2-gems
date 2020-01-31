@@ -5,7 +5,6 @@ import Link from "next/link"
 import MaterialButton from "@material/react-button"
 
 import "./side-tab.styl"
-import "@material/react-button/dist/button.css"
 
 import TSideTab from "./types"
 
