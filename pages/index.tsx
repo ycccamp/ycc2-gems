@@ -1,6 +1,18 @@
+import { Fragment } from 'react'
+
+import Card from 'components/molecules/card'
+
 const Landing = () => {
-    return(
-        <h1>Hello</h1>
+    return (
+        <Fragment>
+            <Card
+                header="Gemstone"
+                footer="History"
+                rippleFooter
+            >
+                Hello
+            </Card>
+        </Fragment>
     )
 }
 

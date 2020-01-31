@@ -2,7 +2,7 @@ import { ReactChild, ReactNode } from "react"
 
 interface SidebarContainerProps {
     children: ReactNode
-    bottom: ReactChild
+    bottom?: ReactChild
 }
 
 export default SidebarContainerProps

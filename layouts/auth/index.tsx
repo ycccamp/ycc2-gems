@@ -1,40 +1,46 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 
-import dynamic from "next/dynamic"
+import dynamic from 'next/dynamic'
 
-import { auth } from "libs/firebase"
+import { auth } from 'libs/firebase'
 
-import LoginLayout from "layouts/login"
+import LoadingLayout from 'layouts/loading'
 
-import { isServer, isEmpty } from "libs/helpers"
+import { isServer, isEmpty } from 'libs/helpers'
 
-import { TUserState } from "./types"
+import { TUserState } from './types'
 
-const LoadingLayout = dynamic(() => import("layouts/loading"), {
-		loading: () => <LoadingLayout />
-	}),
-	DashboardLayout = dynamic(() => import("layouts/dashboard"), {
-		loading: () => <LoadingLayout />
-	})
+const LoginLayout = dynamic(() => import('layouts/login'), {
+        loading: () => (
+            <LoadingLayout />
+        ),
+    }),
+    DashboardLayout = dynamic(() => import('layouts/dashboard'), {
+        loading: () => <LoadingLayout />,
+    })
 
 const AuthLayout = ({ children }) => {
-	let [user, updateUser] = useState<TUserState>(undefined)
+    let [user, updateUser] = useState<TUserState>(undefined)
 
-	useEffect(() => {
-		if (isServer) return
+    useEffect(() => {
+        if (isServer) return
 
-		auth.onAuthStateChanged(user =>
-			user ? updateUser(user) : updateUser({})
-		)
-	}, [])
+        auth.onAuthStateChanged(user =>
+            user ? updateUser(user) : updateUser({})
+        )
+    }, [])
 
-	return typeof user === "undefined" ? (
-		<LoadingLayout />
-	) : isEmpty(user) ? (
-		<LoginLayout />
-	) : (
-		<DashboardLayout>{children}</DashboardLayout>
-	)
+    return typeof user === 'undefined' ? (
+        <LoadingLayout>
+            <DashboardLayout>{children}</DashboardLayout>
+        </LoadingLayout>
+    ) : isEmpty(user) ? (
+        <LoginLayout>
+            <DashboardLayout>{children}</DashboardLayout>
+        </LoginLayout>
+    ) : (
+        <DashboardLayout>{children}</DashboardLayout>
+    )
 }
 
 export default AuthLayout

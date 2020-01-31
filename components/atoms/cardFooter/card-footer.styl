@@ -1,0 +1,53 @@
+.card-footer-container
+    display flex
+    width 100%
+    margin 0
+
+    & > .footer,
+    & > .footer.mdc-button,
+    & > .footer.mdc-button > .mdc-button__label
+        flex 1
+        display flex
+        flex-direction row
+        justify-content flex-start
+        align-items center
+        width 100%
+
+    & > .footer,
+    & > .footer.mdc-button
+        height auto
+        padding 16px 20px
+        border-top 1px solid var(--border)
+        border-top-left-radius 0
+        border-top-right-radius 0
+        border-bottom-left-radius 3px // Due to 1px border of card container
+        border-bottom-right-radius 3px
+
+        & > .title,
+        & > .mdc-button__label 
+            text-transform capitalize
+            letter-spacing normal
+
+            & > .title
+                font-size 16px
+                margin 0
+                color var(--fade)
+
+            & > .-chevron
+                font-size 21px
+                color var(--fade)
+
+    & > .footer.mdc-button
+        transition background var(--transition-fast)
+
+        &:hover,
+        &:focus
+           background rgba(0,0,0, .005)
+
+            &::before,
+            &::after
+                background red
+
+        &::before,
+        &::after
+            background rgba(0,0,0,.35)

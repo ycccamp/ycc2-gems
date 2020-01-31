@@ -18,6 +18,26 @@
         height unset
         padding 12px 24px
         border-radius 0
+        text-transform capitalize
+        letter-spacing normal
+
+        &.-active   
+            box-shadow var(--shadow-0)
+            background var(--background)
+            border-top-right-radius 2px
+            border-bottom-right-radius 2px
+
+            &:hover,
+            &:focus                    
+                &.mdc-button::before,
+                &.mdc-button::after
+                    background var(--background)
+
+        & > .material-icons.-icon
+            width 21px
+            height 21px
+            font-size 21px
+            color var(--fade)
 
     & > .mdc-button__label
         font-size 18px

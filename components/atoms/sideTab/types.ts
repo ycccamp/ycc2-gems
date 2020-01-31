@@ -5,6 +5,7 @@ interface SideTabAsLink {
     asButton?: false
     onClick?: () => null
     children: ReactChild
+    icon?: string
 }
 
 interface SideTabAsButton {
@@ -12,6 +13,7 @@ interface SideTabAsButton {
     asButton: true
     onClick(event: Event): Function
     children: ReactChild
+    icon?: string
 }
 
 type TSideTab = SideTabAsLink | SideTabAsButton

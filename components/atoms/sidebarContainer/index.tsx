@@ -5,7 +5,7 @@ import './sidebar.styl'
 import SidebarContainerProps from './types'
 
 const SidebarContainer: FunctionComponent<SidebarContainerProps> = memo(
-    ({ children, bottom }) => (
+    ({ children, bottom = null }) => (
         <aside id="sidebar">
             <section className="area">{children}</section>
             <footer className="area">{bottom}</footer>

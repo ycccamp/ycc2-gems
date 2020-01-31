@@ -165,9 +165,39 @@ To maintain readability code's style across many collaborator, please consider t
 - Each Component should only contains itself.
 - Each Component should be using `export default`.
 
+### React Guideline
+This project is used `Preact` instead of `React`. `React` is aliased as `preact/compat` which mean you can almost used any library which is integrated with React.
+
+#### Coding style
+- Use terenary operator if component only contains return and has 2 or lower nested `if` statement.
+	```typescript
+	const Sushi = isSalmon ? 
+		<SalmonSushi /> :
+			isFresh ?
+				<FreshSushi /> :
+				<OrdinarySushi />
+	```
+
+- Group `hooks` together:
+	```typescript
+	let [flavour, updateFlavour] = useState("Chilly"),
+		[size, updateSize] = useState("XL")
+	```
+
+- Always React Hooks except you're either extending other-library existing class or implementing `Error Boundary`.
+- Use `memo` if there's no state and life-cycle.
+- Use full name instead of shorten name. Eg. Re-naming `FC` to `FunctionalComponent`.
+- Import Fragment instead of using `<React.Fragment>` and `<>`.
+- Only use semi-colon when neccessary.
+- If components could be `sliced`, slice it. (Refer to Atomic Model)
+
 ### Stylesheet Guideline
 Using [Stylus](http://stylus-lang.com/), almost anything that `sass`, `scss`, `less` can do, should be implementable with stylus. If you're not familiar with `Stylus` you can install any CSS pro-processor you like.
 
-- Refer to the [RSCSS Strategy](https://rscss.io) as coding style.
+- Refer [RSCSS Strategy](https://rscss.io) as coding style.
 - Prevent usage of `semi-colon`, `comma` and `bracket`.
 - Use CSS variable instead of pre-processor's variable system.
+- Color variant should be defined in `/public/stylus/init.styl` for global usage and easier dark-theme implmentation.
+- `padding` and `margin` should be able to be divided by 4 with no remainder.
+- `font-size` should be able to be divided by 3 with no remainder.
+- `button` shouldn't be used with `font-transform: uppercase`.
