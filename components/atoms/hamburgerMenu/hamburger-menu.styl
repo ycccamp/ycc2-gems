@@ -1,0 +1,27 @@
+.hamburger-menu
+    display none
+    appearance none
+    width 40px
+    height 40px
+    color var(--text)
+    border 0
+    background-color transparent
+    border-radius 24px
+    transition background-color var(--transition-fast)
+    outline none
+    cursor pointer
+    -webkit-tap-highlight-color transparent
+
+    &:hover,
+    &:focus
+        background-color rgba(0,0,0,.1)
+
+    @media screen and (max-width 567.9px)
+        &
+            display block
+    
+    & ~ .title
+        color var(--text)
+        font-size 21px
+        font-weight 400
+        margin 0 4px 0 0

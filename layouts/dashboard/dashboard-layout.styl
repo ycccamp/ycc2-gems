@@ -1,6 +1,21 @@
 #dashboard-layout
-    display flex
-    flex-direction row
-    justify-content flex-start
-    width 100%
-    padding-left calc(var(--sidebar-width) + 20px)
+    display grid
+    grid-template-columns repeat(1, 100%)
+    grid-gap 20px
+    width calc(100% - 40px)
+
+    @media screen and (max-width 567.9px)
+        grid-gap 0
+        width 100%
+
+    @media screen and (min-width 568px) and (max-width 967.9px)
+        &
+            grid-template-columns repeat(2, 50%)
+
+    @media screen and (min-width 968px)
+        &
+            grid-template-columns repeat(3, 33%)
+
+    @media screen and (min-width 1120px)
+        &
+            width 1120px

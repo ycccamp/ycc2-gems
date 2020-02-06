@@ -1,15 +1,21 @@
 import React from 'react'
 
-import { mount } from 'enzyme'
+import { render } from 'enzyme'
 
 import DashboardLayout from 'layouts/dashboard'
 
-import Sidebar from 'components/molecules/sidebar'
-
 describe('Dashboard', () => {
-    it('contains Sidebar', () => {
-        let app = mount(<DashboardLayout>Dashboard</DashboardLayout>)
+    let app = render(
+        <DashboardLayout>
+            <p id="children">Dashboard</p>
+        </DashboardLayout>
+    )
 
-        expect(app.find(<Sidebar />)).toBeTruthy()
+    it('should contain Sidebar', () => {
+        expect(app.find('#sidebar')).toBeTruthy()
+    })
+
+    it('should contain children', () => {
+        expect(app.find('#children').length).toEqual(1)
     })
 })

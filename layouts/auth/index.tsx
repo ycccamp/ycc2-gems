@@ -15,7 +15,7 @@ const LoginLayout = dynamic(() => import('layouts/login'), {
             <LoadingLayout />
         ),
     }),
-    DashboardLayout = dynamic(() => import('layouts/dashboard'), {
+    CoreLayout = dynamic(() => import('layouts/core'), {
         loading: () => <LoadingLayout />,
     })
 
@@ -32,14 +32,14 @@ const AuthLayout = ({ children }) => {
 
     return typeof user === 'undefined' ? (
         <LoadingLayout>
-            <DashboardLayout>{children}</DashboardLayout>
+            <CoreLayout>{children}</CoreLayout>
         </LoadingLayout>
     ) : isEmpty(user) ? (
         <LoginLayout>
-            <DashboardLayout>{children}</DashboardLayout>
+            <CoreLayout>{children}</CoreLayout>
         </LoginLayout>
     ) : (
-        <DashboardLayout>{children}</DashboardLayout>
+        <CoreLayout>{children}</CoreLayout>
     )
 }
 

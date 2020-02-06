@@ -1,0 +1,30 @@
+#navbar
+    position sticky
+    z-index 70
+    top 0
+    left 240px
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+    width calc(100% - 240px)
+    height 62px // Same as sidebar-header
+    padding 0 20px
+    background-color var(--background)
+    box-shadow var(--shadow-0)
+    transition top var(--transition-medium)
+
+    @media screen and (max-width 567.9px)
+        &
+            left 0
+            width 100%
+
+    & > .heading
+        display flex
+        flex-direction row
+        justify-content flex-start
+        align-items center
+
+    @media screen and (max-width 767.9px)
+        &.-hidden
+            top -62px

@@ -6,6 +6,7 @@ interface CardPropsWithoutFooter {
     footer?: undefined
     rippleFooter?: boolean
     href?: string
+    image?: string
 }
 
 interface CardPropsWithFooterRipple {
@@ -14,6 +15,7 @@ interface CardPropsWithFooterRipple {
     footer?: string
     rippleFooter?: true
     href?: string
+    image?: string
 }
 
 interface CardPropsWithoutFooterRipple {
@@ -22,6 +24,7 @@ interface CardPropsWithoutFooterRipple {
     footer?: ReactNode
     rippleFooter?: false
     href?: string
+    image?: string
 }
 
 type CardProps = CardPropsWithoutFooter | CardPropsWithFooterRipple | CardPropsWithoutFooterRipple

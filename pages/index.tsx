@@ -1,19 +1,11 @@
-import { Fragment } from 'react'
+import LandingLayout from "layouts/landing"
 
-import Card from 'components/molecules/card'
+import GemDisplay from "components/atoms/gemDisplay"
 
-const Landing = () => {
-    return (
-        <Fragment>
-            <Card
-                header="Gemstone"
-                footer="History"
-                rippleFooter
-            >
-                Hello
-            </Card>
-        </Fragment>
-    )
-}
+const Landing = () => (
+    <LandingLayout>
+        <GemDisplay gems={1000} />
+    </LandingLayout>
+)
 
 export default Landing

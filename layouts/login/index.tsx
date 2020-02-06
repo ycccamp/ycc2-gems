@@ -1,6 +1,6 @@
 import { memo, Fragment } from 'react'
 
-import FacebookButton from 'components/core/facebookButton'
+import FacebookButton from 'components/atoms/facebookButton'
 
 import './login-layout.styl'
 

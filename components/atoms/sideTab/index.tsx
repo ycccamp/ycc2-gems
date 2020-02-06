@@ -1,5 +1,7 @@
 import { FunctionComponent } from 'react'
 
+import toggleSidebar from "stores/dispatch/toggleSidebar"
+
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 

@@ -20,6 +20,7 @@
 		"next": "^9.2.1",
 		"preact": "^10.2.1",
 		"preact-render-to-string": "5.1.4",
+		"purple-tea": "^0.2.3",
 		"stylus": "^0.54.7"
 	},
 	"devDependencies": {

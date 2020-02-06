@@ -34,7 +34,7 @@ const CardFooter: FunctionComponent<CardFooterProps> = memo(
             )
 
         return (
-            <footer className="footer-outer">
+            <footer className="card-footer-container">
                 <div className="footer">{displayType}</div>
             </footer>
         )
