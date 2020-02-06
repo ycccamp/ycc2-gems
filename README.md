@@ -15,7 +15,7 @@ This project is based on the following stack:
 
 - Utilities
 	- TypeScript
-	- Redux
+	- [Purple Tea](https://www.npmjs.com/package/purple-tea)
 	- Stylus (CSS Pre-processer)
 
 Any other sub-stack is appreciately acceptable.
@@ -63,18 +63,10 @@ While developing for YCC Gems please refer to these rules and follow the followi
 
 - stores - Redux store
 	- index.tsx - main export, export main store here.
-	- initState.ts - Defined initial state (for testing).
-	- reducers.ts - Defined reducers which is combined.
-	
-	- reducers - Seperated reducer
-		- [reducerName]
-			- index.ts - Main export
-			- types.ts - Reducer's type
-
-	- selectors - Please refer to [Redux's selector guideline.](https://redux.js.org/recipes/computing-derived-data/) and [Reselect Guideline](https://github.com/reduxjs/reselect)
-		- [reducerName]
-			- index.ts - Main export
-			- types.ts - Selector's type
+	- dispatch - Defined reusable store commit.
+		- [function name] - Reusable function as folder.
+			- index.ts - Main export.
+			- types.ts - Declare type if needed.
 
 - libs - Define any helpers' function here.
 	- [Helpers name]
