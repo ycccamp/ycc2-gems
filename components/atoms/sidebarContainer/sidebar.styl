@@ -25,20 +25,3 @@
 
         &.-hidden
             left -270px
-
-#overlay
-    @media screen and (max-width 567.9px)
-        position fixed
-        z-index 80
-        top 0
-        left 0
-        display block
-        width 100%
-        height 100%
-        background-color rgba(0,0,0,.3)
-        animation show-overlay var(--transition-medium) 0s 1
-        backdrop-filter blur(4px)
-
-@keyframes show-overlay
-    from
-        opacity 0

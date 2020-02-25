@@ -1,0 +1,18 @@
+#overlay
+    position fixed
+    z-index 70
+    top 0
+    left 0
+    display none
+    width 100%
+    height 100%
+    background-color rgba(0,0,0,.3)
+    animation show-overlay var(--transition-medium) 0s 1
+    backdrop-filter blur(4px)
+
+    @media screen and (max-width 567.9px)
+        display block
+
+@keyframes show-overlay
+    from
+        opacity 0

@@ -1,8 +1,12 @@
-import Store from "purple-tea"
+import Store from "arkflows"
 
 const store = new Store()
 
-store.add("sidebar", {
+store.create("sidebar", {
+    isShowing: false
+})
+
+store.create("profile", {
     isShowing: false
 })
 

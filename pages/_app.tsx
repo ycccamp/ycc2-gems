@@ -1,6 +1,7 @@
 import App from "next/app"
 
 import AuthLayout from "layouts/auth"
+import StoreProvider from "components/atoms/storeProvider"
 
 import "stylus/init.styl"
 import "public/material-icons/round.css"
@@ -11,9 +12,11 @@ class YCCGemstone extends App {
 		let { Component, pageProps } = this.props
 
 		return (
-			<AuthLayout>
-				<Component {...pageProps} />
-			</AuthLayout>
+			<StoreProvider>
+				<AuthLayout>
+					<Component {...pageProps} />
+				</AuthLayout>
+			</StoreProvider>
 		)
 	}
 }
