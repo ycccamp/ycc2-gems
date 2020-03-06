@@ -8,7 +8,7 @@ import './nav.styl'
 
 const Navbar = () => {
     let {
-        user: { photoURL = "" },
+        user: { photoURL = '' },
     } = useStore()
 
     let [showModal, updateModal] = useState(false)
@@ -19,11 +19,26 @@ const Navbar = () => {
                 <figure
                     className="profile"
                     tabIndex={0}
-                    onClick={() => updateModal(!showModal)}>
-                    <img className="image" src={`${photoURL}?width=720`} alt="Profile image" />
+                    onClick={() => updateModal(!showModal)}
+                >
+                    <img
+                        className="image"
+                        src={`${photoURL}?width=720`}
+                        alt="Profile image"
+                    />
                 </figure>
             </nav>
-            {showModal ? <ProfileModal /> : null}
+            {showModal ? (
+                <Fragment>
+                    <ProfileModal />
+                    <div
+                        id="profile-overlay"
+                        aria-label="Close profile modal"
+                        tabIndex={0}
+                        onClick={() => updateModal(false)}
+                    />
+                </Fragment>
+            ) : null}
         </Fragment>
     )
 }
