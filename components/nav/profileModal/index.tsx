@@ -21,7 +21,7 @@ const ProfileModal = () => {
         <article id="profile-modal">
             <header className="header">
                 <figure className="profile">
-                    <img className="image" src={photoURL} alt="Profile Image" />
+                    <img className="image" src={`${photoURL}?width=720`} alt="Profile Image" />
                 </figure>
                 <h3 className="name">{displayName}</h3>
                 <p className="email">{email}</p>

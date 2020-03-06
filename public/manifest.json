@@ -1,0 +1,22 @@
+{
+	"short_name": "Gemstone",
+	"name": "YCC2 Gemstone",
+	"icons": [
+		{
+			"src": "/images/ycc_iconX192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/images/ycc_iconX512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#ffffff",
+	"display": "fullscreen",
+	"scope": "/",
+	"theme_color": "#ffffff",
+	"orientation": "portrait"
+}

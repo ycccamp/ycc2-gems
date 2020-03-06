@@ -20,7 +20,7 @@ const Navbar = () => {
                     className="profile"
                     tabIndex={0}
                     onClick={() => updateModal(!showModal)}>
-                    <img className="image" src={photoURL} alt="Profile image" />
+                    <img className="image" src={`${photoURL}?width=720`} alt="Profile image" />
                 </figure>
             </nav>
             {showModal ? <ProfileModal /> : null}
