@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { useState, Fragment } from 'react'
 
 import QrUID from './qruid'
 

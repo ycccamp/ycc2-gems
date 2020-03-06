@@ -1,6 +1,6 @@
 {
-	"name": "next-starter",
-	"version": "0.1.0",
+	"name": "ycc2-gem",
+	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {

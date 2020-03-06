@@ -7,7 +7,8 @@ import firebase from 'libs/firebase'
 import './admin.styl'
 
 const Admin = () => {
-    let [isPending, updatePending] = useState(false)
+    let [isPending, updatePending] = useState(false),
+        [isAddMode, useAddMode] = useState(true)
 
     let add = useRef(0)
 
@@ -29,7 +30,7 @@ const Admin = () => {
                 .doc(targetUid as string),
             gemstoneDoc = await targetRef.get()
 
-        if (!gemstoneDoc.exists){
+        if (!gemstoneDoc.exists) {
             updatePending(false)
             return targetRef.set({
                 amount: add.current,
@@ -38,12 +39,18 @@ const Admin = () => {
 
         let { amount = 0 } = await gemstoneDoc.data()
 
-        await targetRef.set({
-            amount: amount + add.current,
-        })
+        if(!isNaN(add.current))
+            if(isAddMode)
+                await targetRef.set({
+                    amount: amount + add.current,
+                })
+            else
+                await targetRef.set({
+                    amount: amount - add.current,
+                })
 
         updatePending(false)
-    }, [])
+    }, [isAddMode])
 
     return (
         <AdminLayout>
@@ -62,10 +69,16 @@ const Admin = () => {
                     required
                     disabled={isPending}
                 />
-                <button className="submit" disabled={isPending}>
-                    {!isPending ? 'add' : '...'}
+                <button
+                    className={`submit ${!isAddMode ? '-minus-mode' : ''}`}
+                    disabled={isPending}
+                >
+                    {!isPending ? (isAddMode ? 'add' : 'minus') : '...'}
                 </button>
             </form>
+            <button id="admin-mode" onClick={() => useAddMode(!isAddMode)}>
+                {isAddMode ? 'Minus mode' : 'Add mode'}
+            </button>
         </AdminLayout>
     )
 }
