@@ -16,7 +16,7 @@
 		"test:all": "jest && tsc && tslint 'src/**/*.{ts,tsx}'"
 	},
 	"dependencies": {
-		"arkflows": "^0.4.0-alpha.2",
+		"arkflows": "^0.4.0-beta.1",
 		"firebase": "^7.9.3",
 		"next": "^9.2.1",
 		"preact": "^10.2.1",

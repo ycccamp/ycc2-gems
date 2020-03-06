@@ -36,7 +36,7 @@ const Admin = () => {
             })
         }
 
-        let { amount } = await gemstoneDoc.data()
+        let { amount = "" } = await gemstoneDoc.data()
 
         await targetRef.set({
             amount: amount + add.current,

@@ -3,7 +3,7 @@ import { Fragment, useState, useEffect, useCallback } from 'react'
 import store from 'stores'
 import { useStore } from 'stores/provider'
 
-import firebase from 'libs/firebase'
+import useFirebase from 'libs/firebase'
 import { isBlank } from 'libs/helpers'
 
 import './auth.styl'
@@ -14,12 +14,13 @@ const AuthLayout = ({ children }) => {
     let { user } = useStore()
 
     useEffect(() => {
-        firebase().then(({ auth }) => {
+        useFirebase().then(({ auth }) => {
             auth.onAuthStateChanged(user => {
                 if (!user) return store.set('user', {})
 
                 let { displayName, photoURL, uid, email } = user
                 store.set('user', { displayName, photoURL, uid, email })
+                JSON.parse(localStorage.getItem('user'))
             })
         })
     }, [])
@@ -30,13 +31,14 @@ const AuthLayout = ({ children }) => {
 
         updatePending(true)
 
-        let {
-                auth: { FacebookAuthProvider, GoogleAuthProvider },
-            } = await import('firebase/app'),
-            provider = new FacebookAuthProvider(),
-            { auth } = await firebase()
+        try {
+            let { auth, provider } = await useFirebase()
 
-        await auth.signInWithPopup(provider)
+            await auth.signInWithPopup(provider)
+        } catch(error) {
+            console.error(error)
+            updatePending(false)
+        }
 
         updatePending(false)
     }, [])
