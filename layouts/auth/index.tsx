@@ -20,7 +20,15 @@ const AuthLayout = ({ children }) => {
 
                 let { displayName, photoURL, uid, email } = user
                 store.set('user', { displayName, photoURL, uid, email })
-                JSON.parse(localStorage.getItem('user'))
+                localStorage.setItem(
+                    'user',
+                    JSON.stringify({
+                        displayName,
+                        photoURL,
+                        uid,
+                        email,
+                    })
+                )
             })
         })
     }, [])
@@ -35,7 +43,7 @@ const AuthLayout = ({ children }) => {
             let { auth, provider } = await useFirebase()
 
             await auth.signInWithPopup(provider)
-        } catch(error) {
+        } catch (error) {
             console.error(error)
             updatePending(false)
         }
