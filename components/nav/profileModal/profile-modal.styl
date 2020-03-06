@@ -1,0 +1,88 @@
+#profile-modal
+    position fixed
+    z-index 3
+    top 58px
+    right 12px
+    display flex
+    flex-direction column
+    justify-content flex-start
+    align-items flex-start
+    width 260px
+    padding 16px 0 0 0
+    background-color var(--root)
+    border 1px solid var(--border)
+    border-radius 8px
+    animation profile-modal-in .2s ease-out 0s 1
+
+    @keyframes profile-modal-in
+        from
+            opacity 0
+            transform scale(0)
+
+    & > .header
+        display flex
+        flex-direction column
+        justify-content flex-start
+        align-items flex-start
+        width 100%
+        padding 12px 0
+        
+        & > .profile
+            display block
+            width 72px
+            height 72px
+            margin 0 auto 12px auto
+            border-radius 36px
+            background-color var(--preload)
+            outline none
+
+            & > .image
+                width inherit
+                height inherit
+                border-radius inherit
+                object-fit cover
+                object-position center
+                border-image-width 0
+
+        & > .name
+            font-size 18px
+            color var(--text)
+            text-align center
+            font-weight 600
+            margin 8px auto
+
+        & > .email
+            font-size 14px
+            color var(--text-2)
+            text-align center
+            font-weight 400
+            margin 0 auto 8px auto
+
+    & > .footer
+        display flex
+        flex-direction column
+        justify-content flex-start
+        align-items center
+        width 100%
+        padding 12px 0
+        border-top 1px solid var(--border)
+
+        & > .logout
+            appearance none
+            display flex
+            flex-direction row
+            justify-content center
+            align-items center
+            padding 8px 24px
+            font-size 16px
+            color var(--text)
+            border 1px solid var(--border)
+            border-radius 4px
+            background-color transparent
+            cursor pointer
+            outline none
+            transition background-color .2s ease-out
+
+            &:hover,
+            &:focus
+                background-color var(--overlay)

@@ -1,0 +1,42 @@
+#admin-form
+    display flex
+    flex-direction column
+    justify-content space-around
+    align-items center
+    width 100%
+    padding 15vh 16px 0 16px
+    transition opacity .2s ease-out
+
+    &.-pending
+        opacity .7
+
+    & > .text-box
+        appearance none
+        width 100%
+        color var(--text)
+        font-size 24px
+        text-align center
+        font-weight 600
+        margin 8px 0
+        padding 8px 16px
+        border 0
+        border-bottom 2px solid var(--border)
+        background-color transparent
+        outline none
+
+        &:placeholder
+            color var(--text-2)
+
+    & > .submit
+        appearance none
+        display block
+        width 100%
+        color #fff
+        font-size 21px
+        margin 40px 0 0 0
+        padding 12px
+        background-color var(--primary)
+        border 0
+        border-radius 4px
+        box-shadow 0 4px 16px rgba(0,123,255,.5)
+        cursor pointer

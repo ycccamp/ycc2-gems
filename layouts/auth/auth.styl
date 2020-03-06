@@ -1,0 +1,59 @@
+#auth-layout
+    display flex
+    flex-direction column
+    justify-content space-around
+    align-items center
+    width 100%
+    min-height 100vh
+    padding 5vh 0
+    background-color #fff
+    // Prevent flash of login layout
+    animation auth-layout-in .5s ease-out 0s 1
+
+    &.-pending
+        opacity .7
+
+    & > .icon
+        width 36px
+        height 36px
+        object-fit contain
+        object-position center
+
+@keyframes auth-layout
+    0%
+        opacity 0
+
+    30%
+        opacity 0
+
+    100%
+        opacity 1
+
+#login-facebook
+    appearance none
+    display flex
+    flex-direction row
+    justify-content center
+    align-items center
+    margin 20px 0
+    padding 14px 32px
+    color #fff
+    font-size 21px
+    background linear-gradient(45deg, #00c6ff, #0072ff)
+    background-size 200%
+    background-position 50%
+    border 0
+    border-radius 4px
+    box-shadow 0 4px 16px rgba(0,144,255,.625)
+    outline none
+
+    & > .icon
+        width 32px
+        height 32px
+        margin 0 12px 0 0
+
+#auth-footer
+    color var(--text-2)
+    font-size 14px
+    font-weight 200
+    letter-spacing .02em

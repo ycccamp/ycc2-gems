@@ -1,0 +1,23 @@
+image-size = 144px
+
+#admin-target
+    display block
+    width image-size
+    height image-size
+    margin 0 auto
+    background-color var(--preload)
+    border 0
+    border-radius (image-size / 2)
+
+    & > .image
+        width inherit
+        height inherit
+        border-radius inherit
+        object-fit cover
+        object-position center
+
+#admin-error
+    font-size 24px
+    color var(--text)
+    text-align center
+    font-weight 300

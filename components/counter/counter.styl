@@ -1,0 +1,31 @@
+@font-face
+    font-family Somatic
+    src url("/fonts/Somatic-Rounded.otf") format("truetype")
+
+#counter
+    font-size 72px
+    font-weight 700
+    font-family Somatic
+    text-align center
+    letter-spacing .05em
+    margin 0
+
+    @supports (-webkit-background-clip text)
+        &
+            background linear-gradient(45deg, #36D1DC, #5B86E5)
+            -webkit-background-clip text
+            -webkit-text-fill-color: transparent
+
+    & ~ .unit
+        color var(--text-2)
+        text-align center
+        font-size 18px
+        font-family Somatic
+        font-weight 300
+        margin 8px 0 0 0
+
+        @supports (-webkit-background-clip text)
+            &
+                background linear-gradient(45deg, #36D1DC, #5B86E5)
+                -webkit-background-clip text
+                -webkit-text-fill-color: transparent
