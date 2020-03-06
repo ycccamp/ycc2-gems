@@ -44,6 +44,9 @@ const AdminLayout = ({ children }) => {
 
                     updateExistance(avatarDoc.exists)
 
+                    if(!avatarDoc.exists)
+                        return 
+
                     let { fileName } = await avatarDoc.data()
 
                     let storage = await useStorage()
@@ -84,7 +87,7 @@ const AdminLayout = ({ children }) => {
             )
 
         case !targetExist:
-            return <h1 id="admin-erro">Target not existed</h1>
+            return <h1 id="admin-error">Target not existed</h1>
 
         default:
             return (

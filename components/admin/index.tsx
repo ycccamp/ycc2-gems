@@ -36,7 +36,7 @@ const Admin = () => {
             })
         }
 
-        let { amount = "" } = await gemstoneDoc.data()
+        let { amount = 0 } = await gemstoneDoc.data()
 
         await targetRef.set({
             amount: amount + add.current,
@@ -54,7 +54,7 @@ const Admin = () => {
             >
                 <input
                     className="text-box"
-                    type="number"
+                    type="tel"
                     placeholder="Gemstone"
                     onChange={event =>
                         (add.current = parseInt(event.target.value, 10))
