@@ -18,7 +18,7 @@ const firebase = async () => {
     let firestore = firebase.firestore(),
         auth = firebase.auth()
 
-    return { provider: new firebase.auth.GoogleAuthProvider(), firestore, auth }
+    return { provider: new firebase.auth.FacebookAuthProvider(), firestore, auth }
 }
 
 export const useStorage = async () => {
